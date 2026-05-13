@@ -3,15 +3,22 @@
     "dockerComposeFile": ["./docker-compose.yml"],
     "service": "dev",
     "workspaceFolder": "/workspace",
+    "forwardPorts": [8085, 8080],
     "customizations": {
         "vscode": {
             "extensions": [
+                // Python / notebooks
                 "ms-toolsai.jupyter",
                 "ms-toolsai.jupyter-keymap",
                 "ms-toolsai.jupyter-renderers",
                 "ms-python.python",
                 "ms-python.vscode-pylance",
-                "GitHub.copilot"
+                // JavaScript / frontend
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "ms-vscode.live-server",
+                // Prolog / Datalog
+                "arthurwang.vsc-prolog"
             ]
         }
     }
