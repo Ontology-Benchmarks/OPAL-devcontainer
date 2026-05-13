@@ -1,0 +1,53 @@
+version: '0.1'
+services:
+  analysis:
+    image: ${OPAL_ANALYSIS_IMAGE}
+    container_name: analysis
+    volumes:
+      - ../:/workspace
+    environment:
+      - DEBIAN_FRONTEND=noninteractive
+    tty: true
+    stdin_open: true
+
+  reasoner:
+    image: ${OPAL_REASONER_IMAGE}
+    container_name: reasoner
+    volumes:
+      - ../:/workspace
+    working_dir: /workspace
+    restart: unless-stopped
+
+  frontend:
+    image: ${OPAL_FRONTEND_IMAGE}
+    container_name: frontend
+    volumes:
+      - ../:/workspace
+    working_dir: /workspace
+    ports:
+      - "8085:8085"
+    restart: unless-stopped
+
+  vkg:
+    user: root
+    image: ${OPAL_VKG_IMAGE}
+    container_name: vkg_service
+    environment:
+      # Configure the ontop vkg paths to point to the generic staged mapping, properties, and lenses files.
+      ONTOP_MAPPING_FILE: /opt/ontop/input/staging/ocel_mapping.obda
+      ONTOP_PROPERTIES_FILE: /opt/ontop/input/staging/ocel.properties
+      ONTOP_LENSES_FILE: /opt/ontop/input/staging/ocel_lenses.json
+      ONTOP_LOG_ENTRYPOINT: "true"
+      ONTOP_LAZY_INIT: "true"
+      ONTOP_LOG_LEVEL: "all"
+      ONTOP_DEV_MODE: "true"
+    # Mount only the input and jdbc folders
+    volumes:
+      - ../input:/opt/ontop/input
+      - ../jdbc:/opt/ontop/jdbc
+    # Ensure the container runs with the correct working directory and calls the image entrypoint explicitly
+    working_dir: /opt/ontop
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    entrypoint: '/opt/ontop/entrypoint.sh'
