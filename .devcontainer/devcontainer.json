@@ -1,9 +1,8 @@
 {
-    "name": "ontop-testing",
+    "name": "opal-devcontainer",
     "dockerComposeFile": ["./docker-compose.yml"],
     "service": "dev",
     "workspaceFolder": "/workspace",
-    "postCreateCommand": "pip install --no-cache-dir -r requirements.txt",
     "customizations": {
         "vscode": {
             "extensions": [

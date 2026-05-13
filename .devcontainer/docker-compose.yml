@@ -34,9 +34,9 @@ services:
     container_name: vkg_service
     environment:
       # Configure the ontop vkg paths to point to the generic staged mapping, properties, and lenses files.
-      ONTOP_MAPPING_FILE: /opt/ontop/input/staging/ocel_mapping.obda
-      ONTOP_PROPERTIES_FILE: /opt/ontop/input/staging/ocel.properties
-      ONTOP_LENSES_FILE: /opt/ontop/input/staging/ocel_lenses.json
+      ONTOP_MAPPING_FILE: /opt/ontop/input/staging/vkg_mapping.obda
+      ONTOP_PROPERTIES_FILE: /opt/ontop/input/staging/vkg.properties
+      ONTOP_LENSES_FILE: /opt/ontop/input/staging/vkg_lenses.json
       ONTOP_LOG_ENTRYPOINT: "true"
       ONTOP_LAZY_INIT: "true"
       ONTOP_LOG_LEVEL: "all"
