@@ -1,8 +1,8 @@
 # OPAL Developer Images
 
-This repository is not the core OPAL codebase. It defines a modular collection of container images and devcontainer wiring used to run and develop OPAL in a clean, reproducible environment.
+This defines a modular collection of container images and a devcontainer for running and developing OPAL in a clean, reproducible environment.
 
-The goal is simple:
+Goals:
 
 - centralize runtime and tooling dependencies,
 - publish/update images independently (via GHCR),
